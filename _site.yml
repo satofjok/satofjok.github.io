@@ -7,7 +7,7 @@ navbar:
       icon: fa-home
       href: index.html
     - text: "Profile"
-      href: about.html
+      href: Profile.html
     - text: "Research"
       href: Research.html
     - text: "Psychometrics"
