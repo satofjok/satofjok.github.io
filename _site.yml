@@ -8,6 +8,10 @@ navbar:
       href: index.html
     - text: "Profile"
       href: about.html
+    - text: "Research"
+      href: Research.html
+    - text: "Psychometrics"
+      href: Psychometrics.html
 output:
   html_document:
     theme: flatly
