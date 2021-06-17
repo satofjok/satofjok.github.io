@@ -17,6 +17,6 @@ output:
     theme: flatly
     highlight: textmate
     include:
-      afterbody: footer.html
+      after_body: footer.html
 output_dir: "docs"
 ---
