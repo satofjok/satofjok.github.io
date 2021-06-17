@@ -1,6 +1,8 @@
 ---
-title: "My Website"
+title: "このHPについて"
 ---
 
-Hello, Website!
+関西大学大学院の藤岡慧のHPです。
+
+
 ---
