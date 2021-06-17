@@ -8,6 +8,11 @@ navbar:
       href: index.html
     - text: "About Me"
       href: about.html
-output:html_document: 
+output:
+  html_document:
+    theme: flatly
+    highlight: textmate
+    include:
+      afterbody: footer.html
 output_dir: "docs"
 ---
