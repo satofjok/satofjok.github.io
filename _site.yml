@@ -2,7 +2,7 @@
 name: "my-website"
 navbar:
   title: "Psych-tech"
-  left:
+  right:
     - text: "Home"
       icon: fa-home
       href: index.html

@@ -1,8 +1,10 @@
 ---
-title: "このHPについて"
+title: "Welcome to my page!"
 ---
 
 関西大学大学院心理学研究科の藤岡慧のHPです。
+
+本サイトはRmarkdownを用いて作成しています。
 
 
 

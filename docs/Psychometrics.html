@@ -19,6 +19,9 @@
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
@@ -250,6 +253,69 @@ $(document).ready(function () {
 
 
 
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
 
 </head>
 
@@ -257,6 +323,16 @@ $(document).ready(function () {
 
 
 <div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
 
 
 
@@ -273,6 +349,9 @@ $(document).ready(function () {
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
+        
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="index.html">
     <span class="fa fa-home"></span>
@@ -290,9 +369,6 @@ $(document).ready(function () {
   <a href="Psychometrics.html">Psychometrics</a>
 </li>
       </ul>
-      <ul class="nav navbar-nav navbar-right">
-        
-      </ul>
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -306,13 +382,44 @@ $(document).ready(function () {
 </div>
 
 
-<div id="相関" class="section level3">
-<h3>相関</h3>
+<p>心理学専攻の卒業論文/修士論文を書くのに必要な分析方法について，Rコードを走らせながら書いていきます。</p>
+<p>R以外の統計分析ソフトとしては，SPSS，HAD，JASPといったものがありますので，各々の環境に合ったものを使用してください。ただし，本サイトではR以外のソフトの使用法は説明しません。</p>
+<ul>
+<li>SPSS</li>
+<li>HAD</li>
+<li>JASP</li>
+</ul>
+<p>その他には，構造方程式モデリングを実行するのに便利な<strong>Mplus</strong>というソフトもあります。</p>
+<div id="r" class="section level2">
+<h2><span class="header-section-number">0.1</span> R</h2>
+<div id="使用パッケージ" class="section level3">
+<h3><span class="header-section-number">0.1.1</span> 使用パッケージ</h3>
+</div>
+</div>
+<div id="整然データについて" class="section level2">
+<h2><span class="header-section-number">0.2</span> 整然データについて</h2>
+</div>
+<div id="相関" class="section level2">
+<h2><span class="header-section-number">0.3</span> 相関</h2>
+</div>
+<div id="因子分析" class="section level2">
+<h2><span class="header-section-number">0.4</span> 因子分析</h2>
+</div>
+<div id="回帰重回帰分析" class="section level2">
+<h2><span class="header-section-number">0.5</span> 回帰・重回帰分析</h2>
+</div>
+<div id="分散分析" class="section level2">
+<h2><span class="header-section-number">0.6</span> 分散分析</h2>
+</div>
+<div id="構造方程式モデリング" class="section level2">
+<h2><span class="header-section-number">0.7</span> 構造方程式モデリング</h2>
 </div>
 
 <p>Copyright &copy; 2021 Satoshi Fujioka All rights reserved.</p>
 
 
+</div>
+</div>
 
 </div>
 
@@ -345,6 +452,32 @@ $(document).ready(function () {
 
 <!-- code folding -->
 
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>
