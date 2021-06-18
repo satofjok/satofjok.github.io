@@ -312,6 +312,12 @@ div.tocify {
   border-radius: 0px;
 }
 
+.tocify-subheader {
+  display: inline;
+}
+.tocify-subheader .tocify-item {
+  font-size: 0.95em;
+}
 
 </style>
 
@@ -392,13 +398,17 @@ div.tocify {
 <p>その他には，構造方程式モデリングを実行するのに便利な<strong>Mplus</strong>というソフトもあります。</p>
 <div id="rの準備" class="section level1">
 <h1><span class="header-section-number">1</span> Rの準備</h1>
-<div id="rのインストール" class="section level2">
-<h2><span class="header-section-number">1.1</span> Rのインストール</h2>
-</div>
-<div id="パッケージのインストール" class="section level2">
-<h2><span class="header-section-number">1.2</span> パッケージのインストール</h2>
-<p>本サイトで用いるパッケージはpsych，lavaan等です。</p>
+<p><a href="https://www.r-project.org">RのHP</a>からRをインストールしてください。</p>
+<div id="パッケージの読み込み" class="section level2">
+<h2><span class="header-section-number">1.1</span> パッケージの読み込み</h2>
+<p>本サイトでは以下のパッケージを用います。 * psych * lavaan * tidyverse</p>
 <p>anovakunも用います。</p>
+<pre class="r"><code>library(psych)
+library(lavaan)
+library(tidyverse)</code></pre>
+</div>
+<div id="データの読み込み" class="section level2">
+<h2><span class="header-section-number">1.2</span> データの読み込み</h2>
 </div>
 <div id="整然データについて" class="section level2">
 <h2><span class="header-section-number">1.3</span> 整然データについて</h2>
@@ -485,7 +495,7 @@ $(document).ready(function ()  {
       ignoreSelector: ".toc-ignore",
       scrollTo: 0
     };
-    options.showAndHide = true;
+    options.showAndHide = false;
     options.smoothScroll = true;
 
     // tocify
